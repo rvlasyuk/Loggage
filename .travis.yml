@@ -1,0 +1,10 @@
+language: objective-c
+osx_image: xcode11.5
+env:
+  matrix:
+    - IOS_DEVICE_NAME='iPad Pro (9.7-inch)', IOS_VERSION=10.3.1
+    - IOS_DEVICE_NAME='iPhone 11 Pro', IOS_VERSION=latest
+script:
+  - xcodebuild -version
+  - xcodebuild -showsdks
+  - xcodebuild clean test -project Loggage/Loggage.xcodeproj -scheme Loggage CODE_SIGNING_REQUIRED=NO -destination "platform=iOS Simulator,name=$IOS_DEVICE_NAME,OS=$IOS_VERSION"
